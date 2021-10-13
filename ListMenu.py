@@ -35,6 +35,8 @@ while True:
                 num = int(num)
                 pos = int(pos)
                 list.insert(pos-1, num)
+                if pos - 1 > len(list):
+                    print("That position dosn't exist, the number was added to the last position.")
                 break
             else:
                 print("You have to insert numbers.")
@@ -44,8 +46,11 @@ while True:
         print("The list is", len(list), "numbers long.")
 
     elif option == "4":
-
-        del list[-1]
+        if len(list) > 0:
+            print("The last element in the list:", list[-1])
+            del list[-1]
+        else:
+            print("The list is empty.")
 
     elif option == "5":
     
@@ -55,6 +60,7 @@ while True:
             if num > len(list):
                 print("This position does not exist.")
             else:
+                print("The deleted value is", list[num-1])
                 del list[num-1]
     
     elif option == "6":
@@ -67,7 +73,8 @@ while True:
                 for listNum in list:
                     if listNum == num:
                         cont += 1
-                print("Your number is", cont, "time in the list.")
+                print("Your number is", cont, "times in the list.")
+                # There is a method to do it: list.count(num)
                 break
             else:
                 print("You have to insert a number.")
